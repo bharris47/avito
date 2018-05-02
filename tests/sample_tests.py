@@ -1,7 +1,8 @@
 from csv import DictReader
 from unittest import TestCase
 
-from avito.train import trim_sample, get_text, get_location
+from avito.train import trim_sample, get_location
+from avito.samples import get_text, get_location, trim_sample
 from tests.data_utils import get_data_path
 
 SAMPLE_FILENAME = 'sample.csv'

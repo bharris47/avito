@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from avito.train import Vocabulary
+from avito.vocabulary import Vocabulary
 
 
 class VocabularyTests(TestCase):
