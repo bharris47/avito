@@ -100,7 +100,7 @@ def trim_sample(sample):
         'description': sample['description'],
         'city': sample['city'],
         'region': sample['region'],
-        'deal_probability': sample['deal_probability']
+        'deal_probability': float(sample['deal_probability'])
     }
 
 
