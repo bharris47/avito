@@ -12,13 +12,15 @@ from tqdm import tqdm
 class Vocabulary:
     def __init__(self, items):
         self._dictionary = {c: i for i, c in enumerate(sorted(items), 1)}
-        self._unknown = max(self._dictionary.values()) + 1
 
     def __getitem__(self, item):
-        return self._dictionary.get(item, self._unknown)
+        return self._dictionary.get(item)
 
     def __len__(self):
-        return len(self._dictionary) + 2
+        return len(self._dictionary) + 1
+
+    def __contains__(self, item):
+        return item in self._dictionary
 
 
 def chunks(items, chunk_size):
@@ -104,7 +106,7 @@ def trim_sample(sample):
 
 
 def transform_sample(sample, text_vocabulary, location_vocabulary):
-    text = [text_vocabulary[character] for character in get_text(sample)]
+    text = [text_vocabulary[character] for character in get_text(sample) if character in text_vocabulary]
     location = location_vocabulary[get_location(sample)]
     return (text, location), sample['deal_probability']
 
