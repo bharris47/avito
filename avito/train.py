@@ -5,6 +5,7 @@ from random import Random
 
 import numpy as np
 from keras import Input, Model
+from keras.callbacks import TensorBoard, ModelCheckpoint
 from keras.layers import Embedding, CuDNNLSTM, Concatenate, Dense, Reshape
 from tqdm import tqdm
 
@@ -155,5 +156,9 @@ if __name__ == '__main__':
         len(train_generator),
         epochs=100,
         validation_data=val_generator.generate_batches(),
-        validation_steps=len(val_generator)
+        validation_steps=len(val_generator),
+        callbacks=[
+            TensorBoard(),
+            ModelCheckpoint('text_location.{epoch:02d}-{val_loss:.6f}.hdf5')
+        ]
     )
