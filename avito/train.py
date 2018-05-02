@@ -83,7 +83,6 @@ def text_location_model(text_vocab_size, location_vocab_size, text_embedding_siz
     prediction = Dense(1, activation='sigmoid')(features)
 
     model = Model(inputs=[text, location], outputs=prediction)
-    model.summary()
     return model
 
 
